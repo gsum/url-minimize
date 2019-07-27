@@ -8,7 +8,5 @@ Rails.application.routes.draw do
   end
   root to: 'pages#index'
   get '/index', to: 'pages#index', as: 'index'
-  get '/not_found', to: 'pages#show', as: 'not_found'
   get '*unmatched_route', to: 'api/v1/urls#show'
-  get '404', to: 'pages#show'
 end
