@@ -1,16 +1,16 @@
 class Api::V1::UrlsController < ApplicationController
   def top
     top_hits = ShortUrl.limit(100).order(hit_count: :desc)
-    render json: top_hits
+    render json: top_hits, status: 302
   end
 
   def url
-    short_url_object = ShortUrl.where(original_url: params[:url])
+    short_url_object = ShortUrl.find_by_original_url(params[:url])
     if short_url_object.present?
-      render json: short_url_object
+      render json: short_url_object, status: 302
     else
       short_url_object = ShortUrl.create!(original_url: params[:url])
-      render json: short_url_object
+      render json: short_url_object, status: 201
     end
   end
 

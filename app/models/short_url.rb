@@ -1,5 +1,5 @@
 class ShortUrl < ApplicationRecord
-  before_create :set_base_url
+  before_create :set_base_url, :set_default_hit_count
 
   private
 
@@ -12,5 +12,9 @@ class ShortUrl < ApplicationRecord
      token = SecureRandom.urlsafe_base64(5)
      break token unless ShortUrl.where(base_url: token).exists?
    end
+  end
+
+  def set_default_hit_count
+    self.hit_count = 0
   end
 end
