@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     end
   end
   root to: 'pages#index'
-  get 'pages/index'
+  resources :pages
+  get '*unmatched_route', to: 'pages#show'
 end
