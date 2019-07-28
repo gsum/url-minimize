@@ -14,7 +14,7 @@ class Api::V1::UrlsController < ApplicationController
         render json: short_url_object, status: 201
       end
     else
-      render json: { "response": "bad request" }, status: 400
+      render json: { "Response": "Bad Request" }, status: 400
     end
   end
 
