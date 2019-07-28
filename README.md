@@ -1,24 +1,38 @@
-# README
+# url-minimize
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app shotens the passed long url. There is 2 parts in this app the API part and application part. [ Ruby community is famous for self-documenting code](http://www.stackednotion.com/blog/2016/11/02/on-documenting-code/) there is no comments the source code of this app. 
 
-Things you may want to cover:
+#### Information of app:
 
-* Ruby version
+* Ruby 2.5.3
+* Rails 5.2.3
+* PostgreSQL 10.5
 
-* System dependencies
+**Supporting Gems**
+* active-record-serialize
+* sidekiq
+* rest-client
+* redis-rails
+* awesome-print
+* better-errors
+* figaro
 
-* Configuration
+#### Runing the app on local
 
-* Database creation
+* Clone the app
+`git clone https://github.com/gsum/url-minimize.git`
 
-* Database initialization
+* bundle install
+`bundle`
 
-* How to run the test suite
+* Setup db
+`rails db:setup`
+ 
+* Start the server
+`rails s`
 
-* Services (job queues, cache servers, search engines, etc.)
+* Start redis server
+`redis-server`
 
-* Deployment instructions
-
-* ...
+* Run sidekiq for background job
+`bundle exec sidekiq`
