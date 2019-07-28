@@ -1,5 +1,6 @@
 class ShortUrl < ApplicationRecord
   before_create :set_base_url, :set_default_hit_count
+  after_create :update_title
 
   private
 
@@ -16,5 +17,11 @@ class ShortUrl < ApplicationRecord
 
   def set_default_hit_count
     self.hit_count = 0
+  end
+
+  def update_title
+    ap "the model method"
+    ap self.id
+    HardWorker.perform_async(self.id)
   end
 end

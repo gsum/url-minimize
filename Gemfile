@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'active_model_serializers'
 gem 'sidekiq'
 gem 'rest-client'
+gem 'redis-rails'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 
