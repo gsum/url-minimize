@@ -21,6 +21,7 @@ class Api::V1::UrlsController < ApplicationController
   def show
     short_url_object = ShortUrl.find_by_base_url(params[:unmatched_route])
     if short_url_object.present?
+      short_url_object.increment!(:hit_count)
       response.set_header("Redirecting to","minecraft.com")
       redirect_to short_url_object.original_url, status: 301
     else
