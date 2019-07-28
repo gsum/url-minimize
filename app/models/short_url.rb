@@ -20,8 +20,6 @@ class ShortUrl < ApplicationRecord
   end
 
   def update_title
-    ap "the model method"
-    ap self.id
     HardWorker.perform_async(self.id)
   end
 end
